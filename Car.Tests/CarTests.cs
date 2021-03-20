@@ -80,6 +80,18 @@ namespace Car.Tests
             }
         }
 
+        [Fact]
+        public void Reset_WhenPossible_ShouldResetDailyOdometer()
+        {
+            var sut = GetDefaultCar();
+            sut.Refuel(40);
+            sut.Drive(200);
+
+            sut.Reset();
+
+            sut.Odometer.Should().Be(0);
+        }
+
         private static Car GetDefaultCar() => new Car(Color.Red, "Ford Mondeo", 5.0, 60);
     }
 }
