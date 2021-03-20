@@ -27,5 +27,10 @@ namespace Car
             if(refueledAmount > TankCapacity)
                 throw new ArgumentOutOfRangeException(nameof(FuelAmount),"Fuel amount can not be greater than current tank capacity");
         }
+
+        public void Drive(double distance)
+        {
+
+        }
     }
 }
