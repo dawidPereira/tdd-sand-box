@@ -81,6 +81,21 @@ namespace Car.Tests
         }
 
         [Fact]
+        public void Drive_WhenDailyOdometerExtendedLimit_ShouldResetAndUpdateWithRemainingValue()
+        {
+            var sut = GetDefaultCar();
+            sut.Refuel(60);
+
+            sut.Drive(1050);
+
+            using (new AssertionScope())
+            {
+                sut.DailyOdometer.Should().Be(150);
+                sut.Odometer.Should().Be(1050);
+            }
+        }
+
+        [Fact]
         public void Reset_WhenPossible_ShouldResetDailyOdometer()
         {
             var sut = GetDefaultCar();
