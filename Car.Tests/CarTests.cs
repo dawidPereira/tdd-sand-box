@@ -26,7 +26,7 @@ namespace Car.Tests
             var car = new Car(Color.Red, "Ford Mondeo", 5.0, 60);
 
             Action action = () => car.Refuel(-10);
-            action.Should().Throw<ArgumentOutOfRangeException>();
+            action.Should().Throw<ArgumentOutOfRangeException>().WithMessage("Fuel amount can not be lower than zero");
         }
     }
 }
