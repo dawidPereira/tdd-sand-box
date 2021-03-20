@@ -19,5 +19,14 @@ namespace Car.Tests
                 car.TankCapacity.Should().Be(60);
             }
         }
+
+        [Fact]
+        public void Refuel_WhenNegativeAmount_ShouldThrowException()
+        {
+            var car = new Car(Color.Red, "Ford Mondeo", 5.0, 60);
+
+            Action action = () => car.Refuel();
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
     }
 }
