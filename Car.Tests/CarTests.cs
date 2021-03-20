@@ -28,5 +28,14 @@ namespace Car.Tests
             Action action = () => car.Refuel(-10);
             action.Should().Throw<ArgumentOutOfRangeException>().WithMessage("Fuel amount can not be lower than zero (Parameter 'FuelAmount')");
         }
+
+        [Fact]
+        public void Refuel_WhenRefueledAmountIsGreaterThanCapacity_ShouldThrowException()
+        {
+            var car = new Car(Color.Red, "Ford Mondeo", 5.0, 60);
+
+            Action action = () => car.Refuel(70);
+            action.Should().Throw<ArgumentOutOfRangeException>().WithMessage("Fuel amount can not be greater than current tank capacity (Parameter 'FuelAmount')");
+        }
     }
 }
