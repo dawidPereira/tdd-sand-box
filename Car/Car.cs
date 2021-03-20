@@ -26,6 +26,8 @@ namespace Car
             var refueledAmount = FuelAmount + fuelAmount;
             if(refueledAmount > TankCapacity)
                 throw new ArgumentOutOfRangeException(nameof(FuelAmount),"Fuel amount can not be greater than current tank capacity");
+
+            FuelAmount = refueledAmount;
         }
 
         public void Drive(double distance)
