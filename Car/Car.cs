@@ -17,6 +17,8 @@ namespace Car
         public double FuelUsage { get; }
         public int TankCapacity { get; }
         public double FuelAmount { get; private set; }
+        public double DailyOdometer { get; private set; }
+        public double Odometer { get; private set; }
 
         public void Refuel(double fuelAmount)
         {
@@ -34,11 +36,22 @@ namespace Car
         {
             var fuelNeeded = (distance / 100) * FuelUsage;
             if (fuelNeeded < FuelAmount)
+            {
                 FuelAmount -= fuelNeeded;
+                UpdateOdometers(distance);
+            }
             else
             {
+                var traveledDistance = FuelAmount / FuelUsage * 100;
+                UpdateOdometers(traveledDistance);
                 FuelAmount = 0;
             }
+        }
+
+        private void UpdateOdometers(double distance)
+        {
+            DailyOdometer += distance;
+            Odometer += distance;
         }
     }
 }
