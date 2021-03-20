@@ -63,7 +63,12 @@ namespace Car.Tests
 
             sut.Drive(200);
 
-            sut.FuelAmount.Should().Be(0);
+            using (new AssertionScope())
+            {
+                sut.FuelAmount.Should().Be(0);
+                sut.DailyOdometer.Should().Be(100);
+                sut.Odometer.Should().Be(100);
+            }
         }
 
         private static Car GetDefaultCar() => new Car(Color.Red, "Ford Mondeo", 5.0, 60);
