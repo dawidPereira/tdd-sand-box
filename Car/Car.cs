@@ -20,8 +20,7 @@ namespace Car
 
         public void Refuel(double fuelAmount)
         {
-            var newFuelAmount = FuelAmount + fuelAmount;
-            if (newFuelAmount > TankCapacity) throw new ArgumentOutOfRangeException();
+            if (fuelAmount < 0) throw new ArgumentOutOfRangeException();
         }
     }
 }
