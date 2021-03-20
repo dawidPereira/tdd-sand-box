@@ -8,6 +8,7 @@ namespace Car.Tests
         public void Create_WhenValid_ShouldCreateCar()
         {
             var car = new Car(Color.Red, "Ford Mondeo", 5.0, 60, 10);
+            car.Color.Should().Be(Color.Red);
         }
     }
 }
