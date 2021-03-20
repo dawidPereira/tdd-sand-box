@@ -22,6 +22,10 @@ namespace Car
         {
             if (fuelAmount < 0)
                 throw new ArgumentOutOfRangeException(nameof(FuelAmount),"Fuel amount can not be lower than zero");
+
+            var refueledAmount = FuelAmount + fuelAmount;
+            if(refueledAmount > TankCapacity)
+                throw new ArgumentOutOfRangeException(nameof(FuelAmount),"Fuel amount can not be greater than current tank capacity");
         }
     }
 }
