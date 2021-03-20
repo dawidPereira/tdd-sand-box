@@ -39,6 +39,16 @@ namespace Car.Tests
         }
 
         [Fact]
+        public void Refuel_WhenValidData_ShouldRefuelCar()
+        {
+            var sut = GetDefaultCar();
+
+            sut.Refuel(30);
+
+            sut.FuelAmount.Should().Be(30);
+        }
+
+        [Fact]
         public void Drive_WhenValid_ShouldNotThrowException()
         {
             var sut = GetDefaultCar();
