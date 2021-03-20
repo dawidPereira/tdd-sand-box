@@ -90,7 +90,7 @@ namespace Car.Tests
 
             using (new AssertionScope())
             {
-                sut.DailyOdometer.Should().Be(150);
+                sut.DailyOdometer.Should().Be(50);
                 sut.Odometer.Should().Be(1050);
             }
         }
