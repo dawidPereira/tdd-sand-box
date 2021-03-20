@@ -32,7 +32,13 @@ namespace Car
 
         public void Drive(double distance)
         {
-
+            var fuelNeeded = (distance / 100) * FuelUsage;
+            if (fuelNeeded < FuelAmount)
+                FuelAmount -= fuelNeeded;
+            else
+            {
+                FuelAmount = 0;
+            }
         }
     }
 }
