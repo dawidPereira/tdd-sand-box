@@ -1,4 +1,6 @@
-﻿namespace Car
+﻿using System;
+
+namespace Car
 {
     public class Car
     {
@@ -14,5 +16,12 @@
         public string Name { get; }
         public double FuelUsage { get; }
         public int TankCapacity { get; }
+        public double FuelAmount { get; private set; }
+
+        public void Refuel(double fuelAmount)
+        {
+            var newFuelAmount = FuelAmount + fuelAmount;
+            if (newFuelAmount > TankCapacity) throw new ArgumentOutOfRangeException();
+        }
     }
 }
