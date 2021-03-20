@@ -55,6 +55,17 @@ namespace Car.Tests
             sut.Drive(40);
         }
 
+        [Fact]
+        public void Drive_WhenNotEnoughFuel_ShouldStopWhenFuelRunsOut()
+        {
+            var sut = GetDefaultCar();
+            sut.Refuel(5);
+
+            sut.Drive(200);
+
+            sut.FuelAmount.Should().Be(0);
+        }
+
         private static Car GetDefaultCar() => new Car(Color.Red, "Ford Mondeo", 5.0, 60);
     }
 }
