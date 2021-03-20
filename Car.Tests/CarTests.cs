@@ -49,10 +49,19 @@ namespace Car.Tests
         }
 
         [Fact]
-        public void Drive_WhenValid_ShouldNotThrowException()
+        public void Drive_WhenValid_ShouldDriveSelectedDistance()
         {
             var sut = GetDefaultCar();
-            sut.Drive(40);
+            sut.Refuel(5);
+
+            sut.Drive(50);
+
+            using (new AssertionScope())
+            {
+                sut.FuelAmount.Should().Be(2.5);
+                sut.DailyOdometer.Should().Be(50);
+                sut.Odometer.Should().Be(50);
+            }
         }
 
         [Fact]
