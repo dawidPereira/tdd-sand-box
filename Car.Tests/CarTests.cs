@@ -89,7 +89,7 @@ namespace Car.Tests
 
             sut.Reset();
 
-            sut.Odometer.Should().Be(0);
+            sut.DailyOdometer.Should().Be(0);
         }
 
         private static Car GetDefaultCar() => new Car(Color.Red, "Ford Mondeo", 5.0, 60);

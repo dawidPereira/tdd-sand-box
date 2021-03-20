@@ -48,6 +48,8 @@ namespace Car
             }
         }
 
+        public void Reset() => DailyOdometer = 0;
+
         private void UpdateOdometers(double distance)
         {
             DailyOdometer += distance;
