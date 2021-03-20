@@ -20,7 +20,8 @@ namespace Car
 
         public void Refuel(double fuelAmount)
         {
-            if (fuelAmount < 0) throw new ArgumentOutOfRangeException();
+            if (fuelAmount < 0)
+                throw new ArgumentOutOfRangeException(nameof(FuelAmount),"Fuel amount can not be lower than zero");
         }
     }
 }
