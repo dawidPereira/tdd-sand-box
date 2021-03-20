@@ -10,32 +10,41 @@ namespace Car.Tests
         [Fact]
         public void Create_WhenValidData_ShouldCreateCar()
         {
-            var car = new Car(Color.Red, "Ford Mondeo", 5.0, 60);
+            var sut = new Car(Color.Red, "Ford Mondeo", 5.0, 60);
             using (new AssertionScope())
             {
-                car.Color.Should().Be(Color.Red);
-                car.Name.Should().Be("Ford Mondeo");
-                car.FuelUsage.Should().Be(5.0);
-                car.TankCapacity.Should().Be(60);
+                sut.Color.Should().Be(Color.Red);
+                sut.Name.Should().Be("Ford Mondeo");
+                sut.FuelUsage.Should().Be(5.0);
+                sut.TankCapacity.Should().Be(60);
             }
         }
 
         [Fact]
         public void Refuel_WhenNegativeAmount_ShouldThrowException()
         {
-            var car = new Car(Color.Red, "Ford Mondeo", 5.0, 60);
+            var sut = GetDefaultCar();
 
-            Action action = () => car.Refuel(-10);
+            Action action = () => sut.Refuel(-10);
             action.Should().Throw<ArgumentOutOfRangeException>().WithMessage("Fuel amount can not be lower than zero (Parameter 'FuelAmount')");
         }
 
         [Fact]
         public void Refuel_WhenRefueledAmountIsGreaterThanCapacity_ShouldThrowException()
         {
-            var car = new Car(Color.Red, "Ford Mondeo", 5.0, 60);
+            var sut = GetDefaultCar();
 
-            Action action = () => car.Refuel(70);
+            Action action = () => sut.Refuel(70);
             action.Should().Throw<ArgumentOutOfRangeException>().WithMessage("Fuel amount can not be greater than current tank capacity (Parameter 'FuelAmount')");
         }
+
+        [Fact]
+        public void Drive_WhenValid_ShouldNotThrowException()
+        {
+            var sut = GetDefaultCar();
+            sut.Drive(40);
+        }
+
+        private static Car GetDefaultCar() => new Car(Color.Red, "Ford Mondeo", 5.0, 60);
     }
 }
